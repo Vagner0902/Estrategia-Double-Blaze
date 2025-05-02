@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Padrão Cruzado de Tendência</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="chart.min.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f8f9fa; }
+    h1 { color: #343a40; }
+  </style>
+</head>
+<body>
+  <h1>Estratégia: Padrão Cruzado de Tendência</h1>
+  <p>App funcional para registro e análise de padrões.</p>
+  <canvas id="graficoResultados" width="400" height="150"></canvas>
+  <script>
+    new Chart(document.getElementById('graficoResultados'), {
+      type: 'bar',
+      data: {
+        labels: ['Vermelho', 'Preto', 'Branco'],
+        datasets: [{
+          label: 'Frequência',
+          data: [5, 3, 1],
+          backgroundColor: ['#f44336', '#495057', '#ffffff'],
+          borderColor: ['#c62828', '#343a40', '#ced4da'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
